@@ -1,0 +1,57 @@
+server:
+    port: 9080  #访问地址不带项目名  http://localhost:9080/xx
+spring:
+    datasource:
+        url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=utf-8&useSSL=false
+        username: root
+        password: password
+        driver-class-name: com.mysql.jdbc.Driver
+    #mail sender settings
+    mail:
+            # nickname: \u6d77\u5c14\u4f18\u5bb6\u7cfb\u7edf\u90ae\u4ef6\uff08\u8bf7\u52ff\u56de\u590d\uff09
+        host: smtp.163.com
+        username: uhomeBj@163.com
+        password: uhomeBj
+        properties:
+            mail:
+                smtp:
+                    auth: true
+        freemarker: #编码格式
+            charset: UTF-8
+        template:
+            active: template.ftl
+
+    freemarker:
+        cache: false #缓存配置
+        expose-request-attributes: false
+        content-type: text/html
+        template-loader-path: classpath:/templates/
+        expose-spring-macro-helpers: false
+        check-template-location: true
+        enabled: true
+
+logging:
+    level:
+        ROOT: info
+        com.hshbic.ai: debug
+    file: logs/ai-mail-service.log
+
+ #文件上传路径
+path:
+    uploadPath: D:\\storage\\upload
+    downloadPath: D:\\storage\\download
+
+# mybatis 配置
+mybatis:
+    type-aliases-package: com.hshbic.ai.model
+    mapper-locations: classpath:mapper/*.xml
+    configuration:
+        map-underscore-to-camel-case: true
+    mapper:
+        mappers: com.hshbic.ai.dao
+        not-empty: false
+        identity: MYSQL
+
+
+
+
